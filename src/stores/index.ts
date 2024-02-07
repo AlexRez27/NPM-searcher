@@ -18,7 +18,7 @@ export const useNPM = defineStore({
       try {
         this.isLoaded = true
 
-        const response = await axios.get(`${corsProxyUrl}${BASE_URL}-/v1/search?text=${name}`)
+        const response = await axios.get(`${BASE_URL}-/v1/search?text=${name}`)
         const getData = response.data
 
         this.NPMItems = getData.objects.map((el: NPM) => {

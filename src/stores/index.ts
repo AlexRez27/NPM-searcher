@@ -2,7 +2,6 @@ import type { PackageItem, NPM, PackageInfo } from './../types'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/'
 const BASE_URL = 'https://registry.npmjs.org/'
 
 export const useNPM = defineStore({

@@ -7,7 +7,9 @@
       label="Search npm package"
       hide-details="auto"
     ></v-text-field>
-    <v-btn type="submit" @click.prevent="click" class="form__btn"> Search </v-btn>
+    <v-btn :disabled="!search" type="submit" @click.prevent="click" class="form__btn">
+      Search
+    </v-btn>
   </v-form>
 </template>
 
@@ -20,6 +22,7 @@ const search = ref('')
 
 const click = () => {
   store.getNPMItems(search.value)
+  search.value = ''
 }
 </script>
 

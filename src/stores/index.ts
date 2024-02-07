@@ -36,11 +36,11 @@ export const useNPM = defineStore({
     },
     async getPackage(name: string, version: string) {
       try {
-        const response = await axios.get(`${corsProxyUrl}${BASE_URL}${name}/${version}`)
+        const response = await axios.get(`${BASE_URL}${name}/${version}`)
         const getData = response.data
 
         const info: PackageInfo = {
-          name: getData?.name,
+          name: getData.name,
           version: getData.version,
           description: getData.description,
           module: getData.module,

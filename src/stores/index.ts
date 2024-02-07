@@ -3,18 +3,19 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/'
-const BASE_URL = 'http://registry.npmjs.org/'
+const BASE_URL = 'https://registry.npmjs.org/'
 
 export const useNPM = defineStore({
   id: 'NPM',
   state: () => ({
-    NPMItems: [] as PackageItem[],
+    NPMItems: [] as PackageItem[] | [],
     isLoaded: false,
     packageInfo: {} as PackageInfo | {}
   }),
 
   actions: {
     async getNPMItems(name: string) {
+      this.NPMItems = []
       try {
         this.isLoaded = true
 
@@ -38,7 +39,6 @@ export const useNPM = defineStore({
       try {
         const response = await axios.get(`${corsProxyUrl}${BASE_URL}${name}/${version}`)
         const getData = response.data
-        console.log(response.data)
 
         const info: PackageInfo = {
           name: getData?.name,
